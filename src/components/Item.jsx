@@ -1,24 +1,18 @@
 import { Link } from 'react-router-dom'
-import { productImages } from '../data/products' 
+import { productImages } from '../data/products'
 
-function resolveImage(item) {
-  if (item.image && typeof item.image === 'string') {
-    return item.image
-  }
-  if (item.imageKey && productImages[item.imageKey]) {
-    return productImages[item.imageKey]
-  }
-  if (item.image) {
-    return item.image
-  }
+const resolveImage = (item) => {
+  if (item.image && typeof item.image === 'string')     return item.image
+  if (item.imageKey && productImages[item.imageKey])   return productImages[item.imageKey]
+  if (item.image)                                      return item.image
   return 'https://via.placeholder.com/300x200?text=Sin+Imagen'
 }
 
 function Item({ item }) {
-  const imgSrc = resolveImage(item)
-  const title = item.title || item.name || 'Producto'
+  const imgSrc      = resolveImage(item)
+  const title       = item.title || item.name || 'Producto'
   const description = item.description || ''
-  const price = item.price ?? '—'
+  const price       = item.price ?? '—'
 
   return (
     <div

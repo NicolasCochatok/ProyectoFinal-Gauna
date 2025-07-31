@@ -1,27 +1,29 @@
 import { useState } from 'react'
 
 function ItemCount({ stock, onAdd }) {
-  const [count, setCount] = useState(1)
+  const [qty, setQty] = useState(1)
 
-  const increase = () => {
-    if (count < stock) {
-      setCount(count + 1)
-    }
-  }
+  const increase = () => qty < stock && setQty(qty + 1)
+  const decrease = () => qty > 1     && setQty(qty - 1)
 
-  const decrease = () => {
-    if (count > 1) {
-      setCount(count - 1)
-    }
+  if (stock === 0) {
+    return <p style={{ color: 'red' }}>Sin stock disponible</p>
   }
 
   return (
-    <div style={{ marginTop: '1rem' }}>
-      <button onClick={decrease}>−</button>
-      <span style={{ margin: '0 1rem' }}>{count}</span>
-      <button onClick={increase}>+</button>
-      <br /><br />
-      <button onClick={() => onAdd(count)}>Agregar</button>
+    <div style={{ marginTop: '1rem', display: 'inline-flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <button onClick={decrease}>−</button>
+        <span>{qty}</span>
+        <button onClick={increase}>+</button>
+      </div>
+
+      <button
+        onClick={() => onAdd(qty)}
+        style={{ marginTop: '0.75rem', padding: '0.4rem 1rem' }}
+      >
+        Agregar
+      </button>
     </div>
   )
 }

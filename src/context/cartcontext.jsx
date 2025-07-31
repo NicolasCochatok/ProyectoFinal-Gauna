@@ -1,64 +1,43 @@
-import { createContext, useContext, useState, useMemo } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]) // [{id,title,price,qty,stock,image}]
+  const [cart, setCart] = useState([])
 
-  // Agregar item (suma si ya existe, respetando stock)
   const addItem = (item, qty) => {
     setCart(prev => {
-      const exists = prev.find(p => p.id === item.id)
-      if (exists) {
-        const updated = prev.map(p =>
+      const found = prev.find(p => p.id === item.id)
+      if (found) {
+        return prev.map(p =>
           p.id === item.id
-            ? { ...p, qty: Math.min(p.qty + qty, item.stock ?? p.stock ?? qty) }
+            ? { ...p, qty: Math.min(p.qty + qty, item.stock ?? p.stock) }
             : p
         )
-        return updated
       }
       return [...prev, { ...item, qty }]
     })
   }
 
-  // Quitar un item por id
-  const removeItem = id => {
-    setCart(prev => prev.filter(p => p.id !== id))
-  }
+  const removeItem = id => setCart(prev => prev.filter(p => p.id !== id))
+  const clearCart  = () => setCart([])
 
-  // Vaciar carrito
-  const clearCart = () => setCart([])
+  const getItemQty = id => cart.find(p => p.id === id)?.qty || 0
+  const isInCart   = id => getItemQty(id) > 0
+  const totalQty   = cart.reduce((acc, p) => acc + p.qty, 0)
+  const totalPrice = cart.reduce((acc, p) => acc + p.qty * (p.price ?? 0), 0)
 
-  // Helpers memorizados
-  const totalQty = useMemo(
-    () => cart.reduce((acc, p) => acc + p.qty, 0),
-    [cart]
+  return (
+    <CartContext.Provider
+      value={{ cart, addItem, removeItem, clearCart, getItemQty, isInCart, totalQty, totalPrice }}
+    >
+      {children}
+    </CartContext.Provider>
   )
-
-  const totalPrice = useMemo(
-    () => cart.reduce((acc, p) => acc + p.qty * (p.price ?? 0), 0),
-    [cart]
-  )
-
-  const isInCart = id => cart.some(p => p.id === id)
-
-  const value = {
-    cart,
-    addItem,
-    removeItem,
-    clearCart,
-    totalQty,
-    totalPrice,
-    isInCart,
-  }
-
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 
-export function useCart() {
+export const useCart = () => {
   const ctx = useContext(CartContext)
-  if (!ctx) {
-    throw new Error('useCart debe usarse dentro de un CartProvider')
-  }
+  if (!ctx) throw new Error('useCart debe usarse dentro de <CartProvider>')
   return ctx
 }

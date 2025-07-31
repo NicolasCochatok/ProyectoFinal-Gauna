@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useCart } from '../context/cartcontext'
+import { useCart } from '../context/CartContext'
 
 function CartWidget() {
   const { totalQty } = useCart()
@@ -11,26 +11,25 @@ function CartWidget() {
         position: 'relative',
         display: 'inline-block',
         padding: '0.25rem 0.5rem',
+        fontSize: '1.5rem',
         textDecoration: 'none',
-        fontSize: '1.25rem',
         lineHeight: 1,
+        color: '#000',
       }}
-      aria-label="Ir al carrito"
-      title="Ir al carrito"
+      aria-label="Carrito"
     >
       🛒
       {totalQty > 0 && (
         <span
           style={{
             position: 'absolute',
-            top: '-4px',
-            right: '-4px',
+            top: '-6px',
+            right: '-6px',
             background: 'red',
             color: '#fff',
             borderRadius: '50%',
             padding: '0 6px',
             fontSize: '0.75rem',
-            lineHeight: 1.2,
           }}
         >
           {totalQty}

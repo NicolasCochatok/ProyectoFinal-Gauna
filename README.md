@@ -1,89 +1,114 @@
-📄 README.md
-markdown
-Copiar
-Editar
-# Segunda Pre-Entrega - React JS (Coderhouse)
+# Proyecto Final – React JS    
+_E-commerce “Mi Tienda” – Joyas & Accesorios_
 
-Este proyecto corresponde a la segunda pre-entrega del curso de React JS. Se trata de una tienda online básica con navegación entre categorías, listado de productos y vista de detalle, utilizando React Router DOM y simulación de asincronía.
+Este repositorio contiene la **entrega final** del curso React JS (Coderhouse).  
+La SPA muestra un catálogo de productos almacenados en **Cloud Firestore**, permite ver el detalle, agregar al carrito, generar una orden y guardar la compra en la base de datos.
 
 ---
 
-## 🛠️ Tecnologías usadas
+## 🌐 Demo
 
-- React
-- Vite
-- React Router DOM
-- JavaScript (ES6+)
-
----
-
-## ✅ Funcionalidades implementadas
-
-### Navegación
-- Configuración de rutas con `BrowserRouter`, `Routes` y `Route`.
-- Navegación entre la **Home** y páginas por **categoría** (`/category/:categoryId`).
-- Vista de detalle por producto (`/item/:itemId`).
-
-### Componentes
-- `Navbar`: menú superior con enlaces a la home y categorías.
-- `ItemListContainer`: obtiene productos con una promesa y filtra por categoría.
-- `ItemList`: recorre los productos con `.map()` y renderiza un `Item` por cada uno.
-- `Item`: muestra una card de producto con botón de acceso al detalle.
-- `ItemDetailContainer`: obtiene un producto según `id` por URL y pasa a `ItemDetail`.
-- `ItemDetail`: muestra el detalle del producto, con selector de cantidad.
-- `ItemCount`: contador que permite sumar/restar cantidad hasta el stock disponible.
-
-### Asincronía
-- Simulación de llamadas a API con `setTimeout` y promesas.
-- Productos cargados desde un mock en `data/products.js`.
+| Entorno | URL |
+|---------|-----|
+| **GitHub Pages** | <https://nicolascochatok.github.io/ProyectoFinal-Gauna/> |
 
 ---
 
-## 📸 Imágenes
+## 🚀 Stack & librerías
 
-Todos los productos se muestran con imágenes locales en `src/assets/`, importadas dinámicamente desde el mock.
+| Área | Herramienta |
+|------|-------------|
+| Framework | **React 19** + Vite |
+| Ruteo SPA | `react-router-dom ^7` |
+| Estado global | **Context API** + Hooks |
+| Backend as a Service | **Firebase v11** (Firestore DB + Analytics) |
+| Lint & Build | ESLint • Vite |
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
+## 📁 Estructura principal
 
-1. Cloná el repositorio:
-```bash
-git clone https://github.com/tu-usuario/segunda-pre-entrega.git
-Instalá las dependencias:
-
-bash
-Copiar
-Editar
-npm install
-Ejecutá el proyecto:
-
-bash
-Copiar
-Editar
-npm run dev
-Abrí http://localhost:5173 en tu navegador.
-
-📂 Estructura principal
-css
-Copiar
-Editar
 src/
-├── components/
-│   ├── Navbar.jsx
-│   ├── ItemListContainer.jsx
-│   ├── ItemList.jsx
-│   ├── Item.jsx
-│   ├── ItemDetailContainer.jsx
-│   ├── ItemDetail.jsx
-│   └── ItemCount.jsx
-├── data/
-│   └── products.js
-├── assets/
-│   └── *.jpeg
-├── App.jsx
-├── main.jsx
-└── index.css
-💬 Autor
-Marcos Nicolás Gauna Cochatok
-Estudiante - Comisión Flex React JS
+├─ assets/ # imágenes locales
+├─ components/ # componentes presentacionales y contenedores
+├─ context/CartContext # provider & hook de carrito
+├─ data/products.js # mock + mapa de imágenes (solo para seed)
+└─ services/firebase/
+├─ config.js # inicialización Firebase + export db
+├─ seed.js # helper para sembrar productos
+└─ db.js # helpers Firestore (createOrder,...)
+
+yaml
+Copiar
+Editar
+
+---
+
+## 🔧 Instalación local
+
+```bash
+git clone https://github.com/NicolasCochatok/ProyectoFinal-Gauna.git
+cd ProyectoFinal-Gauna
+npm install
+cp .env.example .env        # rellena tus credenciales Firebase
+npm run dev                 # abre http://localhost:5173/ProyectoFinal-Gauna/
+Variables .env
+ini
+Copiar
+Editar
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_STORAGE_BUCKET=...
+VITE_FIREBASE_MESSAGING_SENDER_ID=...
+VITE_FIREBASE_APP_ID=...
+VITE_FIREBASE_MEASUREMENT_ID=...
+🌱 Sembrar productos (opcional)
+Si tu colección products está vacía pulsa:
+
+bash
+Copiar
+Editar
+npm run seed
+Usa src/services/firebase/seed.js para crear / actualizar los 10 productos de ejemplo.
+
+🛠️ Scripts útiles
+Comando	Descripción
+npm run dev	Vite dev-server con recarga en caliente
+npm run build	Build de producción en dist/
+npm run preview	Sirve el build para testear
+npm run lint	Ejecuta ESLint
+
+✨ Funcionalidades
+Listado dinámico de productos por categoría (consulta Firestore).
+
+Detalle con selector de cantidad y stock.
+
+Carrito global (Context) – agrega, elimina, totaliza.
+
+Checkout con validaciones, genera orden en Firestore y muestra ID.
+
+Render condicional: loaders, “carrito vacío”, etc.
+
+Deploy automático a GitHub Pages vía Actions.
+
+📸 Screenshot
+
+Autor
+Nicolás Gauna – LinkedIn – Comisión # React JS
+Coderhouse · Julio 2025
+
+makefile
+Copiar
+Editar
+::contentReference[oaicite:0]{index=0}
+
+
+
+
+
+
+
+Fuentes
+
+Preguntar a ChatGPT

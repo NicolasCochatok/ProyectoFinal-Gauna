@@ -1,16 +1,14 @@
-// IMPORTS de imágenes locales (solo para frontend)
 import arosCorazonTurquesa from '../assets/arosCorazonTurquesa.jpeg'
-import pañueloAtado from '../assets/pañueloAtado.jpeg'
-import pañueloAtado2 from '../assets/pañueloAtado2.jpeg'
-import pañueloenCuello from '../assets/pañueloenCuello.jpeg'
-import pañueloyCartera from '../assets/pañueloyCartera.jpeg'
-import pañueloyCartera2 from '../assets/pañueloyCartera2.jpeg'
-import pulserasAcero5 from '../assets/pulserasAcero5.jpeg'
-import arosArgolla1 from '../assets/arosArgolla1.jpeg'
-import arosArgolla2 from '../assets/arosArgolla2.jpeg'
-import arosArgolla3 from '../assets/arosArgolla3.jpeg'
+import pañueloAtado          from '../assets/pañueloAtado.jpeg'
+import pañueloAtado2         from '../assets/pañueloAtado2.jpeg'
+import pañueloenCuello       from '../assets/pañueloenCuello.jpeg'
+import pañueloyCartera       from '../assets/pañueloyCartera.jpeg'
+import pañueloyCartera2      from '../assets/pañueloyCartera2.jpeg'
+import pulserasAcero5        from '../assets/pulserasAcero5.jpeg'
+import arosArgolla1          from '../assets/arosArgolla1.jpeg'
+import arosArgolla2          from '../assets/arosArgolla2.jpeg'
+import arosArgolla3          from '../assets/arosArgolla3.jpeg'
 
-// 🔹 Mapa de claves -> import de imagen
 export const productImages = {
   arosCorazonTurquesa,
   pañueloAtado,
@@ -24,8 +22,6 @@ export const productImages = {
   arosArgolla3,
 }
 
-// 🔹 Datos puros (para seed Firestore)
-// Usamos imageKey en lugar de import directo
 export const products = [
   {
     id: '1',
@@ -34,7 +30,7 @@ export const products = [
     description: 'Aritos dorados con dije de corazón turquesa esmaltado',
     stock: 5,
     price: 3500,
-    imageKey: 'arosCorazonTurquesa'
+    imageKey: 'arosCorazonTurquesa',
   },
   {
     id: '2',
@@ -43,7 +39,7 @@ export const products = [
     description: 'Pañuelo de seda floral púrpura/naranja',
     stock: 10,
     price: 7500,
-    imageKey: 'pañueloAtado'
+    imageKey: 'pañueloAtado',
   },
   {
     id: '3',
@@ -52,7 +48,7 @@ export const products = [
     description: 'Diseño abstracto en tonos rosados y celestes',
     stock: 8,
     price: 7200,
-    imageKey: 'pañueloAtado2'
+    imageKey: 'pañueloAtado2',
   },
   {
     id: '4',
@@ -61,7 +57,7 @@ export const products = [
     description: 'Ideal para primavera',
     stock: 6,
     price: 7800,
-    imageKey: 'pañueloenCuello'
+    imageKey: 'pañueloenCuello',
   },
   {
     id: '5',
@@ -70,7 +66,7 @@ export const products = [
     description: 'Set elegante floral con cartera marrón',
     stock: 4,
     price: 10500,
-    imageKey: 'pañueloyCartera'
+    imageKey: 'pañueloyCartera',
   },
   {
     id: '6',
@@ -79,7 +75,7 @@ export const products = [
     description: 'Estampado tropical combinable',
     stock: 7,
     price: 8200,
-    imageKey: 'pañueloyCartera2'
+    imageKey: 'pañueloyCartera2',
   },
   {
     id: '7',
@@ -88,7 +84,7 @@ export const products = [
     description: 'Tipo Pandora acero quirúrgico con dijes',
     stock: 9,
     price: 9800,
-    imageKey: 'pulserasAcero5'
+    imageKey: 'pulserasAcero5',
   },
   {
     id: '8',
@@ -97,7 +93,7 @@ export const products = [
     description: 'Ondulado plateado',
     stock: 6,
     price: 6300,
-    imageKey: 'arosArgolla1'
+    imageKey: 'arosArgolla1',
   },
   {
     id: '9',
@@ -106,7 +102,7 @@ export const products = [
     description: 'Diseño liso alternativo',
     stock: 4,
     price: 6100,
-    imageKey: 'arosArgolla2'
+    imageKey: 'arosArgolla2',
   },
   {
     id: '10',
@@ -115,6 +111,6 @@ export const products = [
     description: 'Texturadas estilo clásico',
     stock: 3,
     price: 6700,
-    imageKey: 'arosArgolla3'
-  }
+    imageKey: 'arosArgolla3',
+  },
 ]
